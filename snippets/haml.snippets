@@ -1,0 +1,29 @@
+# snippets for HAML 
+snippet conf
+	- content_for :${1:javascripts_incl} do
+	  ${2}
+
+snippet confjs
+	- content_for :javascripts_incl do
+	  = include_javascripts(:${1:init})
+	  = javascript_include_tag  '${2}'
+
+snippet cc
+	- content_for :stylesheet do
+	  ${1}
+
+snippet confjsinline
+	- content_for :javascript do
+	  = javascript_include_tag  '${1}'
+
+snippet includejs
+	= include_javascripts(:${1:init})
+
+snippet jstag
+	= javascript_include_tag  '${1}'
+
+snippet includecss
+	= include_stylesheets(:${1})
+
+snippet csstag
+	= stylesheet_link_tag '${1}'
