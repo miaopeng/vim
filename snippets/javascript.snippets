@@ -20,7 +20,7 @@ snippet fun
 	}
 # Anonymous Function
 snippet f
-	function(${1}){
+	function(${1}) {
 		${2}
 	};
 # if
@@ -91,12 +91,12 @@ snippet :f
 	}${3:,}
 # setTimeout function
 snippet settimeout
-	${3:var timer = }setTimeout(function(){
+	${3:var timer = }setTimeout(function() {
 		${2}
 	}, ${1:10});
 # setInterval function
 snippet setinterval
-	${3:var timer = }setInterval(function(){
+	${3:var timer = }setInterval(function() {
 		${2}
 	}, ${1:10});
 
@@ -109,11 +109,11 @@ snippet gett
 snippet $
 	$(${1:"selector"}).${2:method}(${3})${4}
 snippet $(
-	$(function(){
+	$(function() {
 		${1://code}
 	});
 snippet $.each
-	$.each(${1:array|object}, function(${2:o}){
+	$.each(${1:array|object}, function(${2:o}) {
 		${3:this}
 	});
 snippet /*
@@ -130,7 +130,7 @@ snippet single
 	 * @param {${8:String|Object|Array|Boolean|Number}} ${9:paramName} 
 	 * @returns 
 	 */
-	var ${1:Singleton} = (function(){
+	var ${1:Singleton} = (function() {
 		${2}
 		return {
 			${3:publicMethod}: function(${5:opt}) {
@@ -143,16 +143,16 @@ snippet module
 	 * ${5:Describe what this module does}
 	 * @param {object} ${6:paramName}
 	 */
-	var ${1:classname} = (function(){
+	var ${1:classname} = (function() {
 		var $1Object = {
-			${2:privateMethod1}: function(){
+			${2:privateMethod1}: function() {
 				
 			},
-			${3:privateMethod2}: function(){
+			${3:privateMethod2}: function() {
 				
 			}
 		};
-		return function(opt){
+		return function(opt) {
 			var publicObj = {
 				options: {},
 				$2: $1Object.$2,
@@ -162,3 +162,8 @@ snippet module
 			return publicObj;
 		};
 	})();
+#jasmine
+snippet it
+	it('${1}', function() {
+		$2
+	});

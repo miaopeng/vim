@@ -164,9 +164,6 @@ let g:jslint_neverAutoRun=1
 
 " filetype
 autocmd BufNewFile,BufRead *.haml setlocal ft=haml
-autocmd BufNewFile,BufRead *.scss setlocal ft=css
-autocmd BufNewFile,BufRead *.sass setlocal ft=css
-autocmd BufNewFile,BufRead *.less setlocal ft=css
 autocmd BufNewFile,BufRead *.styl setlocal ft=stylus
 
 " language support
