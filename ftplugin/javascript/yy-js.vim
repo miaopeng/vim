@@ -61,7 +61,7 @@ EOF
 function! s:SetMyMake()
 	let s:cpo_save = &cpo
 	set cpo-=C
-	"setlocal makeprg=jshint\ %\ --config\ '$HOME/.jshintrc'\
+	setlocal makeprg=jshint\ %\ --config\ '$HOME/.jshintrc'\
 	setlocal errorformat=%f:\ line\ %l\\,\ col\ %c\\,\ %m
 	let &cpo = s:cpo_save
 	unlet s:cpo_save

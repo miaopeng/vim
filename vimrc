@@ -164,15 +164,19 @@ let g:jslint_neverAutoRun=1
 
 " filetype
 autocmd BufNewFile,BufRead *.haml setlocal ft=haml
+autocmd BufNewFile,BufRead *.erb setlocal ft=haml
 autocmd BufNewFile,BufRead *.styl setlocal ft=stylus
 
 " language support
 autocmd FileType html 		setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2
+autocmd FileType haml 		setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2
 autocmd FileType javascript setlocal expandtab shiftwidth=4 tabstop=4 softtabstop=4 textwidth=79
-autocmd FileType css 		setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2 textwidth=79
+autocmd FileType css 		  setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2 textwidth=79
+autocmd FileType scss 		setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2 textwidth=79
 autocmd FileType stylus 	setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2 textwidth=79
 autocmd FileType python 	setlocal expandtab shiftwidth=4 tabstop=4 softtabstop=4 textwidth=79
 autocmd FileType ruby 		setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2
+autocmd FileType vim 		  setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2
 
 " for AutoComplPop
 autocmd FileType html setlocal omnifunc=htmlcomplete#CompleteTags
@@ -182,6 +186,8 @@ autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 autocmd FileType javascript noremap <buffer> <Leader>f :exe '0,$!js-beautify % --config ~/.jsbeautifyrc'<cr>
 autocmd FileType html       noremap <buffer> <Leader>f :exe '0,$!html-beautify % --config ~/.htmlbeautifyrc'<cr>
 autocmd FileType css        noremap <buffer> <Leader>f :exe '0,$!css-beautify % --config ~/.cssbeautifyrc'<cr>
+
+au TabEnter * if exists("t:wd") | exe "cd" t:wd | endif 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " commands
@@ -195,10 +201,18 @@ function! SetMySession(s)
 	execute "SaveSession ".a:s
 endfunction
 
+function! SetMyPath(s)
+	execute "cd ~/workspace/".a:s
+	:let t:wd = "~/workspace/".a:s
+endfunction
+
+
 " load and save session
 let g:session_autosave = 'no'
+let g:session_autoload = 'no'
 command! -nargs=? -bang SS call SetMySession("<args>") 
 command! -nargs=? -bang LL call GetMySession("<args>") 
+command! -nargs=? -bang CC call SetMyPath("<args>")
 
 " for make & debug
 
@@ -238,6 +252,17 @@ endfunction
 function! MyRemoveBreakPoint()
 	exe 'call ' . b:myRemoveBreakPoint . '()'
 endfunction
+
+" Displaying status line always
+set laststatus=2
+
+" Custom status line
+set statusline=%<%f\ %h%m%r%=%-14.(%l,%c%V%)\ %r%{ShowProject()}%h
+
+" Show working directory
+function! ShowProject()
+	return substitute(getcwd(), '/Users/mios/workspace/', '', '')
+endfunction  
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " map
@@ -279,7 +304,7 @@ if MySys() == "mac"
 	map <D-w> <C-w>
 	map <D-r> <C-r>
 	map <D-o> <C-o>
-	map <D-i> <C-i>
+	"map <D-i> <C-i>
 	map <D-g> <C-g>
 	map <D-a> <C-a>
 	map <D-]> <C-]>
@@ -318,7 +343,7 @@ let g:netrw_winsize = 30
 " NERDTree setting
 let NERDTreeShowBookmarks=1
 let NERDTreeChDirMode=2
-nmap <silent> <leader>nt :NERDTree 
+nmap <silent> <leader>nt :NERDTree<cr> 
 
 " Most Recently Used (MRU)
 nmap <silent> <leader>r :MRU<cr>
@@ -362,3 +387,5 @@ if has("gui_running")
 	nmap <Leader>tn :tabnew<CR> 
 endif
 
+" vim-rails, open jump point in new tab
+nnoremap <Leader>gf :tab wincmd f<CR>

@@ -418,3 +418,13 @@ snippet tas
 	task :${2:task_name => [:dependent, :tasks]} do
 		${3}
 	end
+# Rails logger
+snippet log
+	Rails.logger.info(${1})
+# Rails logger, multi lines
+snippet logs
+	Rails.logger.info("\n")
+	Rails.logger.info('***** ${1} *****')
+	Rails.logger.info(${2})
+	Rails.logger.info('*' * 10)
+	Rails.logger.info("\n")
