@@ -19,6 +19,27 @@ set showcmd		" display incomplete commands
 set incsearch	" do incremental searching
 call pathogen#infect()
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Vundle
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+filetype off                   " required
+set rtp+=~/.vim/bundle/vundle/ " set the runtime path to include Vundle and initialize
+call vundle#rc()
+
+Bundle 'gmarik/vundle' " let Vundle manage Vundle, required!
+
+" My Bundles here
+Bundle 'AutoClose'
+Bundle 'Emmet.vim'
+Bundle 'jshint.vim'
+Bundle 'rails.vim'
+Bundle 'snipMate' " need config
+Bundle 'vimwiki'
+Bundle 'surround.vim'
+
+filetype plugin indent on    " required!
+
+
 " format lines to textwidth length
 map Q gq	
 
@@ -387,5 +408,3 @@ if has("gui_running")
 	nmap <Leader>tn :tabnew<CR> 
 endif
 
-" vim-rails, open jump point in new tab
-nnoremap <Leader>gf :tab wincmd f<CR>
