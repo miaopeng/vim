@@ -22,22 +22,98 @@ call pathogen#infect()
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Vundle
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-filetype off                   " required
-set rtp+=~/.vim/bundle/vundle/ " set the runtime path to include Vundle and initialize
+" required
+filetype off
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
-Bundle 'gmarik/vundle' " let Vundle manage Vundle, required!
+" let Vundle manage Vundle, required!
+Bundle 'gmarik/vundle'
 
 " My Bundles here
+
 Bundle 'AutoClose'
+
+" For SCSS
+"Bundle 'JulesWang/css.vim'
+"Bundle 'cakebaker/scss-syntax.vim'
+
+" Ctrl+y,
 Bundle 'Emmet.vim'
+
+" :Gblame
+Bundle 'tpope/vim-fugitive'
+
+" F2
 Bundle 'jshint.vim'
+
+" :Matrix
+Bundle 'matrix.vim--Yang'
+
+" gf
 Bundle 'rails.vim'
-Bundle 'snipMate' " need config
+
+Bundle 'xolox/vim-misc'
+Bundle 'xolox/vim-session'
+
+  """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+  " Session
+  " :LL, :SS
+  """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+  function! GetMySession(s)
+    execute "OpenSession! ".a:s
+  endfunction
+
+  function! SetMySession(s)
+    execute "SaveSession ".a:s
+  endfunction
+
+  " load and save session
+  let g:session_autosave = 'no'
+  let g:session_autoload = 'no'
+  command! -nargs=? -bang SS call SetMySession("<args>") 
+  command! -nargs=? -bang LL call GetMySession("<args>") 
+
+
+" need config
+Bundle 'snipMate'
+
+" ,cc ,cu
+Bundle 'The-NERD-Commenter'
+
+Bundle 'The-NERD-tree'
+
+  """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+  " NERD Tree
+  " ,nt
+  """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+  let NERDTreeShowBookmarks=1
+  let NERDTreeChDirMode=2
+  nmap <silent> <leader>nt :NERDTree<cr> 
+
+
 Bundle 'vimwiki'
+
+  """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+  " Vimwiki
+  " ,ww ,wt
+  """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+  let g:vimwiki_use_mouse = 1
+  let g:vimwiki_list = [{'path': '~/Dropbox/vimwiki/',
+  \ 'path_html': '~/Dropbox/vimwiki/html/',
+  \ 'html_header': '~/Dropbox/vimwiki/template/header.tpl',}]
+
+
 Bundle 'surround.vim'
 
-filetype plugin indent on    " required!
+" required!
+filetype plugin indent on
+
 
 
 " format lines to textwidth length
@@ -214,13 +290,6 @@ au TabEnter * if exists("t:wd") | exe "cd" t:wd | endif
 " commands
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-function! GetMySession(s)
-	execute "OpenSession! ".a:s
-endfunction
-
-function! SetMySession(s)
-	execute "SaveSession ".a:s
-endfunction
 
 function! SetMyPath(s)
 	execute "cd ~/workspace/".a:s
@@ -228,11 +297,6 @@ function! SetMyPath(s)
 endfunction
 
 
-" load and save session
-let g:session_autosave = 'no'
-let g:session_autoload = 'no'
-command! -nargs=? -bang SS call SetMySession("<args>") 
-command! -nargs=? -bang LL call GetMySession("<args>") 
 command! -nargs=? -bang CC call SetMyPath("<args>")
 
 " for make & debug
@@ -361,10 +425,6 @@ let g:tlist_javascript_settings = 'javascript;f:function;c:class;o:object;m:meth
 let g:netrw_winsize = 30
 "nmap <silent> <leader>fe :Sexplore!<cr>
 
-" NERDTree setting
-let NERDTreeShowBookmarks=1
-let NERDTreeChDirMode=2
-nmap <silent> <leader>nt :NERDTree<cr> 
 
 " Most Recently Used (MRU)
 nmap <silent> <leader>r :MRU<cr>
@@ -381,20 +441,7 @@ nmap <leader>fd :FufDir<cr>
 nmap <leader>fa :FufBookmark<cr>
 
 
-"let NERDCreateDefaultMappings=0
-"let NERDShutUp=1
-"let g:NERDCommenterLeader="<leader>n" " change NERD_commenter.vim
-
 let VCSCommandSVKExec='disabled no such executable'
-
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Vimwiki
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:vimwiki_use_mouse = 1
-let g:vimwiki_list = [{'path': '~/Dropbox/vimwiki/',
-\ 'path_html': '~/Dropbox/vimwiki/html/',
-\ 'html_header': '~/Dropbox/vimwiki/template/header.tpl',}]
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
