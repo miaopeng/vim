@@ -19,6 +19,9 @@ set showcmd		" display incomplete commands
 set incsearch	" do incremental searching
 call pathogen#infect()
 
+let mapleader=","
+let g:mapleader=","
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Vundle
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -34,7 +37,19 @@ Bundle 'gmarik/vundle'
 
 " My Bundles here
 
+" <leader>/, e, o, go, t, h, v, q
+Bundle 'mileszs/ack.vim'
+
+  nmap <leader>/ :Ack 
+
+" :Ag, e, o, go, t, h, v, q
+Bundle 'rking/ag.vim'
+
 Bundle 'AutoClose'
+
+" <c-p>, <c-j> and <c-k> to navigation in result panel
+Bundle 'ctrlp.vim'
+
 
 " For SCSS
 "Bundle 'JulesWang/css.vim'
@@ -46,8 +61,22 @@ Bundle 'Emmet.vim'
 " :Gblame
 Bundle 'tpope/vim-fugitive'
 
+Bundle 'FuzzyFinder'
+
+  """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+  " FuzzyFinder setting
+  """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+  nmap <leader>fb :FufBuffer<cr>
+  nmap <leader>ff :FufFile<cr>
+  nmap <leader>fd :FufDir<cr>
+  nmap <leader>fa :FufBookmark<cr>
+
 " F2
 Bundle 'jshint.vim'
+
+  let g:jslint_neverAutoRun=1
+
+Bundle 'L9'
 
 " :Matrix
 Bundle 'matrix.vim--Yang'
@@ -254,7 +283,6 @@ endif
 autocmd! bufwritepost .gvimrc source ~/.gvimrc
 autocmd! bufwritepost gvimrc source ~/.gvimrc
 
-let g:jslint_neverAutoRun=1
 
 " Auto set pwd to the directory of current editing file
 "autocmd BufRead * :lcd! %:p:h
@@ -290,12 +318,10 @@ au TabEnter * if exists("t:wd") | exe "cd" t:wd | endif
 " commands
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-
 function! SetMyPath(s)
 	execute "cd ~/workspace/".a:s
 	:let t:wd = "~/workspace/".a:s
 endfunction
-
 
 command! -nargs=? -bang CC call SetMyPath("<args>")
 
@@ -349,12 +375,11 @@ function! ShowProject()
 	return substitute(getcwd(), '/Users/mios/workspace/', '', '')
 endfunction  
 
+
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " map
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-let mapleader=","
-let g:mapleader=","
 
 map <silent> <leader>rc :tabe ~/.vim/vimrc<cr>
 map <leader>q :q<cr>
@@ -396,62 +421,5 @@ if MySys() == "mac"
 	cmap <D-d> <C-d>
 	imap <D-e> <C-e>
 	imap <D-y> <C-y>
-endif
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" plugin setting
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" taglists setting
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-nmap <silent> <leader>tg :TlistToggle<CR>
-"let Tlist_Use_SingleClick=1
-"Tlist_Process_File_Always=1
-let Tlist_File_Fold_Auto_Close=1
-let Tlist_Exit_OnlyWindow = 1
-let Tlist_Show_Menu=1
-let Tlist_GainFocus_On_ToggleOpen=1
-let Tlist_Close_OnSelect=1
-let Tlist_Compact_Format=1
-let Tlist_Use_Right_Window = 1
-let Tlist_WinWidth = 30
-let Tlist_Inc_Winwidth = 0
-let g:tlist_javascript_settings = 'javascript;f:function;c:class;o:object;m:method;s:string;a:array;n:constant'
-
-" netrw setting
-let g:netrw_winsize = 30
-"nmap <silent> <leader>fe :Sexplore!<cr>
-
-
-" Most Recently Used (MRU)
-nmap <silent> <leader>r :MRU<cr>
-
-" ACK
-nmap <leader>/ :Ack 
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" FuzzyFinder setting
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-nmap <leader>fb :FufBuffer<cr>
-nmap <leader>ff :FufFile<cr>
-nmap <leader>fd :FufDir<cr>
-nmap <leader>fa :FufBookmark<cr>
-
-
-let VCSCommandSVKExec='disabled no such executable'
-
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Tab switch - use Ctrl+TAB and Ctrl+Shift+TAB
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-if has("gui_running")
-	nmap <C-TAB> :tabNext<CR>
-	nmap <C-S-TAB> :tabnext<CR>
-	imap <C-TAB> <ESC><ESC>:tabNext<CR>
-	imap <C-S-TAB> <ESC><ESC>:tabnext<CR>
-	nmap <Leader>tn :tabnew<CR> 
 endif
 
