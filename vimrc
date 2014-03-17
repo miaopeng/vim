@@ -45,11 +45,8 @@ Bundle 'mileszs/ack.vim'
 " :Ag, e, o, go, t, h, v, q
 Bundle 'rking/ag.vim'
 
-Bundle 'AutoClose'
-
 " <c-p>, <c-j> and <c-k> to navigation in result panel
 Bundle 'ctrlp.vim'
-
 
 " For SCSS
 "Bundle 'JulesWang/css.vim'
@@ -81,11 +78,51 @@ Bundle 'L9'
 " :Matrix
 Bundle 'matrix.vim--Yang'
 
+Bundle 'Shougo/neocomplcache.vim'
+
+  " Disable AutoComplPop. 
+  let g:acp_enableAtStartup = 0 
+  " Use neocomplcache. 
+  let g:neocomplcache_enable_at_startup = 1 
+  " Use smartcase. 
+  let g:neocomplcache_enable_smart_case = 1 
+  " Use camel case completion. 
+  "let g:neocomplcache_enable_camel_case_completion = 1 
+  " Use underbar completion. 
+  "let g:neocomplcache_enable_underbar_completion = 1 
+  " Set minimum syntax keyword length. 
+  let g:neocomplcache_min_syntax_length = 1 
+  let g:neocomplcache_auto_completion_start_length = 1
+  let g:neocomplcache_manual_completion_start_length = 0
+  let g:neocomplcache_max_list = 20
+
+  " key-mappings
+  inoremap <expr><C-g> neocomplcache#undo_completion()
+  inoremap <expr><C-l> neocomplcache#complete_common_string()
+  inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
+  inoremap <expr><C-y> neocomplcache#close_popup()
+  inoremap <expr><C-e> neocomplcache#cancel_popup()
+
+  "inoremap <expr><Space> pumvisible() ? "\<c-y>" : "\<Space>"
+  inoremap <expr><Esc> pumvisible() ? "\<c-y>" : "\<Esc>"
+  inoremap <expr><Enter> pumvisible() ? "\<c-n>" : "\<Enter>"
+  inoremap <expr><s-Enter> pumvisible() ? "\<c-p>" : "\<s-Enter>"
+  "imap <expr><tab>  pumvisible() ? "\<c-n>" : "\<TAB>"
+  "imap <expr><s-tab>  pumvisible() ? "\<c-p>" : "\<s-TAB>"
+
 " gf
 Bundle 'rails.vim'
 
+Bundle 'SirVer/ultisnips'
+
+  "let g:UltiSnipsExpandTrigger="<tab>"
+  let g:UltiSnipsJumpForwardTrigger="<tab>"
+  let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+  let g:UltiSnipsSnippetDirectories=["ultisnips"]
+
 Bundle 'xolox/vim-misc'
 Bundle 'xolox/vim-session'
+
 
   """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
   " Session
@@ -106,9 +143,6 @@ Bundle 'xolox/vim-session'
   command! -nargs=? -bang SS call SetMySession("<args>") 
   command! -nargs=? -bang LL call GetMySession("<args>") 
 
-
-" need config
-Bundle 'snipMate'
 
 " ,cc ,cu
 Bundle 'The-NERD-Commenter'
