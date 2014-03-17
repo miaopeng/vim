@@ -903,4 +903,16 @@ it 'routes to #${1:action}' do
 end
 endsnippet
 
+snippet log "Rails logger"
+Rails.logger.info(${1})
+endsnippet
+
+snippet logs "Rails logger, multi lines"
+Rails.logger.info("\n")
+Rails.logger.info('***** ${1} *****')
+Rails.logger.info(${2})
+Rails.logger.info('*' * 10)
+Rails.logger.info("\n")
+endsnippet
+
 # vim:ft=snippets:
