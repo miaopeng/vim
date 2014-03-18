@@ -76,39 +76,7 @@ Bundle 'jshint.vim'
 Bundle 'L9'
 
 " :Matrix
-Bundle 'matrix.vim--Yang'
-
-Bundle 'Shougo/neocomplcache.vim'
-
-  " Disable AutoComplPop. 
-  let g:acp_enableAtStartup = 0 
-  " Use neocomplcache. 
-  let g:neocomplcache_enable_at_startup = 1 
-  " Use smartcase. 
-  let g:neocomplcache_enable_smart_case = 1 
-  " Use camel case completion. 
-  "let g:neocomplcache_enable_camel_case_completion = 1 
-  " Use underbar completion. 
-  "let g:neocomplcache_enable_underbar_completion = 1 
-  " Set minimum syntax keyword length. 
-  let g:neocomplcache_min_syntax_length = 1 
-  let g:neocomplcache_auto_completion_start_length = 1
-  let g:neocomplcache_manual_completion_start_length = 0
-  let g:neocomplcache_max_list = 20
-
-  " key-mappings
-  inoremap <expr><C-g> neocomplcache#undo_completion()
-  inoremap <expr><C-l> neocomplcache#complete_common_string()
-  inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
-  inoremap <expr><C-y> neocomplcache#close_popup()
-  inoremap <expr><C-e> neocomplcache#cancel_popup()
-
-  "inoremap <expr><Space> pumvisible() ? "\<c-y>" : "\<Space>"
-  inoremap <expr><Esc> pumvisible() ? "\<c-y>" : "\<Esc>"
-  inoremap <expr><Enter> pumvisible() ? "\<c-n>" : "\<Enter>"
-  inoremap <expr><s-Enter> pumvisible() ? "\<c-p>" : "\<s-Enter>"
-  "imap <expr><tab>  pumvisible() ? "\<c-n>" : "\<TAB>"
-  "imap <expr><s-tab>  pumvisible() ? "\<c-p>" : "\<s-TAB>"
+"Bundle 'matrix.vim--Yang'
 
 " gf
 Bundle 'rails.vim'
