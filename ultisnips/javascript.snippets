@@ -178,6 +178,8 @@ snippet App "Application"
  * ${7:Describe what this application does}
  */
 ;(function($) {
+    'use strict';
+
     var App = {
         init: function(opt) {
             
@@ -187,4 +189,8 @@ snippet App "Application"
 })(window.jQuery);
 endsnippet
 
-# vim:ft=snippets:
+snippet View "Yottaa Backbone View"
+Y.View.${1} = Y.View.Base.extend({
+    ${2}
+});
+endsnippet

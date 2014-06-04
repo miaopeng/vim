@@ -47,6 +47,7 @@ Bundle 'rking/ag.vim'
 
 " <c-p>, <c-j> and <c-k> to navigation in result panel
 Bundle 'ctrlp.vim'
+  let g:ctrlp_working_path_mode = ''
 
 " For SCSS
 "Bundle 'JulesWang/css.vim'

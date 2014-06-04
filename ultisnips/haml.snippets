@@ -21,3 +21,11 @@ endsnippet
 snippet csstag
 = stylesheet_link_tag "${1}"
 endsnippet
+
+snippet path
+${1}path(${2}${3:, param_name: param_value})
+endsnippet
+
+snippet link "link_to helper"
+= link_to "${1:text}", ${2:path}${3:, :id =>''}${4:, :class => ''}${5:, :remote => true}${6:, :confirm => 'Do you want to delete the selected item?'}
+endsnippet
