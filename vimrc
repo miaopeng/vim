@@ -223,6 +223,7 @@ set wildignore+=node_modules,tmp/cache
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " interface
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let macvim_skip_colorscheme=1
 colorscheme yytextmate
 "colorscheme solarized
 

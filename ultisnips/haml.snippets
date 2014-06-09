@@ -22,8 +22,12 @@ snippet csstag
 = stylesheet_link_tag "${1}"
 endsnippet
 
+snippet formtag
+= form_tag(path, method: "PUT", remote: true, :id => "", :class => "") do
+endsnippet
+
 snippet path
-${1}path(${2}${3:, param_name: param_value})
+${1}path(${2}${3:, param_name: param_value}${4:, :anchor => ''})
 endsnippet
 
 snippet link "link_to helper"
