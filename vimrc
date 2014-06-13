@@ -48,6 +48,7 @@ Bundle 'rking/ag.vim'
 " <c-p>, <c-j> and <c-k> to navigation in result panel
 Bundle 'ctrlp.vim'
   let g:ctrlp_working_path_mode = ''
+  let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git\|tmp'
 
 " For SCSS
 "Bundle 'JulesWang/css.vim'
