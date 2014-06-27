@@ -90,6 +90,15 @@ Bundle 'SirVer/ultisnips'
   let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
   let g:UltiSnipsSnippetDirectories=["ultisnips"]
 
+Bundle 'Syntastic'
+  let g:syntastic_error_symbol = '●'
+  let g:syntastic_warning_symbol = '●'
+  let g:syntastic_style_error_symbol = '»!'
+  let g:syntastic_style_warning_symbol = '»'
+
+  let g:syntastic_javascript_checkers = ['jshint']
+  let g:syntastic_ruby_checkers = ['rubocop']
+
 Bundle 'xolox/vim-misc'
 Bundle 'xolox/vim-session'
 

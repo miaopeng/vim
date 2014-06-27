@@ -59,11 +59,13 @@ if has("gui_running")
 	:hi Ignore guifg=grey40
 	:hi StatusLineNC guibg=#333333 guifg=grey40 gui=none
 	:hi StatusLine guibg=#333333 guifg=#999999 gui=none 
-	:hi Todo guifg=orangered guibg=yellow2
+	:hi Todo guifg=yellow guibg=#555555 " used for warning info on SignColumn
 	:hi WarningMsg guifg=#CC1D20
 	:hi Debug guifg=#CC1D20
 	:hi ErrorMsg guifg=#F9F9F9 guibg=#BF0013
-	:hi Error guifg=#F9F9F9 guibg=#BF0013 
+	:hi Error guifg=#BF0013 guibg=#555555 " used for error info on SignColumn
 	:hi SpellErrors guifg=#F9F9F9 guibg=#BF0013
 	:hi VertSplit guibg=#555555 guifg=#555555 gui=none
+
+	:hi SignColumn guifg=#333333 guibg=#555555
 end
