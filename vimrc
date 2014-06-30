@@ -147,9 +147,9 @@ Bundle 'vimwiki'
   """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
   let g:vimwiki_use_mouse = 1
-  let g:vimwiki_list = [{'path': '~/Dropbox/vimwiki/',
-  \ 'path_html': '~/Dropbox/vimwiki/html/',
-  \ 'html_header': '~/Dropbox/vimwiki/template/header.tpl',}]
+  let g:vimwiki_list = [{'path': '~/Dropbox/profile/vimwiki/',
+  \ 'path_html': '~/Dropbox/profile/vimwiki/html/',
+  \ 'html_header': '~/Dropbox/profile/vimwiki/template/header.tpl',}]
 
 
 Bundle 'surround.vim'
