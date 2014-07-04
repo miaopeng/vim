@@ -99,6 +99,7 @@ Bundle 'Syntastic'
   let g:syntastic_javascript_checkers = ['jshint']
   let g:syntastic_ruby_checkers = ['rubocop']
   let g:syntastic_css_checkers = ['csslint']
+  let g:syntastic_haml_checkers = ['haml_lint']
 
 Bundle 'xolox/vim-misc'
 Bundle 'xolox/vim-session'
@@ -236,7 +237,6 @@ set wildignore+=node_modules,tmp/cache
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let macvim_skip_colorscheme=1
 colorscheme yytextmate
-"colorscheme solarized
 
 if MySys() == "mac"
 	"set guifont=TextMate_Regular:h13
@@ -295,9 +295,7 @@ endif
 " autocmd
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " auto reload when modify gvimrc
-autocmd! bufwritepost .gvimrc source ~/.gvimrc
-autocmd! bufwritepost gvimrc source ~/.gvimrc
-
+autocmd! bufwritepost vimrc source ~/.vim/vimrc
 
 " Auto set pwd to the directory of current editing file
 "autocmd BufRead * :lcd! %:p:h
