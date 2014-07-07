@@ -33,37 +33,37 @@ set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
 " let Vundle manage Vundle, required!
-Bundle 'gmarik/vundle'
+Plugin 'gmarik/vundle'
 
-" My Bundles here
+" My Plugins here
 
 " <leader>/, e, o, go, t, h, v, q
-Bundle 'mileszs/ack.vim'
+Plugin 'mileszs/ack.vim'
 
   nmap <leader>/ :Ack 
 
 " :Ag, e, o, go, t, h, v, q
-Bundle 'rking/ag.vim'
+Plugin 'rking/ag.vim'
 
 " <c-p>, <c-j> and <c-k> to navigation in result panel
-Bundle 'ctrlp.vim'
+Plugin 'ctrlp.vim'
   let g:ctrlp_working_path_mode = ''
   let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git\|tmp'
 
 " For SCSS
-"Bundle 'JulesWang/css.vim'
-"Bundle 'cakebaker/scss-syntax.vim'
+"Plugin 'JulesWang/css.vim'
+"Plugin 'cakebaker/scss-syntax.vim'
 
 " Ctrl+y,
-Bundle 'Emmet.vim'
+Plugin 'Emmet.vim'
 
 " :Gblame
-Bundle 'tpope/vim-fugitive'
+Plugin 'tpope/vim-fugitive'
 
-Bundle 'FuzzyFinder'
+Plugin 'FuzzyFinder'
 
   """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-  " FuzzyFinder setting
+  " FuzzyFinder settings
   """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
   nmap <leader>fb :FufBuffer<cr>
   nmap <leader>ff :FufFile<cr>
@@ -71,26 +71,68 @@ Bundle 'FuzzyFinder'
   nmap <leader>fa :FufBookmark<cr>
 
 " F2
-Bundle 'jshint.vim'
+Plugin 'jshint.vim'
 
   let g:jslint_neverAutoRun=1
 
-Bundle 'L9'
+Plugin 'L9'
+
+Plugin 'itchyny/lightline.vim'
+
+  """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+  " LightLine settings
+  """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+  " Displaying status line always
+  set laststatus=2
+
+  " Custom status line
+  "set statusline=%<%f\ %{SyntasticStatuslineFlag()}\ %h%m%r%=%-14.(%l,%c%V%)\ %r%{ShowProject()}%h
+
+  let g:lightline = {
+        \ 'active': {
+        \   'left': [ [ 'mode', 'paste' ],
+        \             [ 'projectname', 'readonly', 'filename', 'modified' ] ],
+        \   'right': [ [ 'syntastic', 'lineinfo' ], ['percent'], [ 'fileformat', 'fileencoding', 'filetype' ] ]
+        \ },
+        \ 'inactive': {
+        \   'left': [ [ 'mode' ],
+        \             [ 'filename' ] ],
+        \   'right': []
+        \ },
+        \ 'component': {
+        \   'readonly': '%{&readonly?"x":""}',
+        \ },
+        \ 'component_function': {
+        \   'mode': 'MyMode',
+        \   'projectname': 'ProjectName',
+        \   'filename': 'MyFilename'
+        \ },
+        \ 'component_expand': {
+        \   'syntastic': 'SyntasticStatuslineFlag',
+        \ },
+        \ 'component_type': {
+        \   'syntastic': 'error',
+        \ }
+        \ }
 
 " :Matrix
-"Bundle 'matrix.vim--Yang'
+"Plugin 'matrix.vim--Yang'
 
 " gf
-Bundle 'rails.vim'
+Plugin 'rails.vim'
 
-Bundle 'SirVer/ultisnips'
+Plugin 'SirVer/ultisnips'
 
   "let g:UltiSnipsExpandTrigger="<tab>"
   let g:UltiSnipsJumpForwardTrigger="<tab>"
   let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
   let g:UltiSnipsSnippetDirectories=["ultisnips"]
 
-Bundle 'Syntastic'
+Plugin 'Syntastic'
+  let g:syntastic_always_populate_loc_list = 1
+  let g:syntastic_stl_format = '[%E{Err: %fe #%e}%B{, }%W{Warn: %fw #%w}]'
+  "let g:syntastic_auto_loc_list = 1
+
   let g:syntastic_error_symbol = '●'
   let g:syntastic_warning_symbol = '●'
   let g:syntastic_style_error_symbol = '»!'
@@ -101,8 +143,8 @@ Bundle 'Syntastic'
   let g:syntastic_css_checkers = ['csslint']
   let g:syntastic_haml_checkers = ['haml_lint']
 
-Bundle 'xolox/vim-misc'
-Bundle 'xolox/vim-session'
+Plugin 'xolox/vim-misc'
+Plugin 'xolox/vim-session'
 
 
   """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -126,9 +168,11 @@ Bundle 'xolox/vim-session'
 
 
 " ,cc ,cu
-Bundle 'The-NERD-Commenter'
+Plugin 'The-NERD-Commenter'
 
-Bundle 'The-NERD-tree'
+  :set guioptions-=L
+
+Plugin 'The-NERD-tree'
 
   """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
   " NERD Tree
@@ -140,7 +184,7 @@ Bundle 'The-NERD-tree'
   nmap <silent> <leader>nt :NERDTree<cr> 
 
 
-Bundle 'vimwiki'
+Plugin 'vimwiki'
 
   """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
   " Vimwiki
@@ -153,7 +197,7 @@ Bundle 'vimwiki'
   \ 'html_header': '~/Dropbox/profile/vimwiki/template/header.tpl',}]
 
 
-Bundle 'surround.vim'
+Plugin 'surround.vim'
 
 " required!
 filetype plugin indent on
@@ -266,10 +310,7 @@ let g:xml_use_xhtml = 1 "for xml.vim
 
 if has("gui_macvim")
 
-	set columns=171	" window width
-	set lines=58	" window height
-	winpos 52 42	" window position 
-
+  " Cancel default shortkeys
 	let macvim_skip_cmd_opt_movement = 1
 	let macvim_hig_shift_movement = 1
 
@@ -296,6 +337,8 @@ endif
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " auto reload when modify gvimrc
 autocmd! bufwritepost vimrc source ~/.vim/vimrc
+
+autocmd! bufwritepost *.js,*.rb,*.css,*.scss call s:syntastic()
 
 " Auto set pwd to the directory of current editing file
 "autocmd BufRead * :lcd! %:p:h
@@ -377,16 +420,39 @@ function! MyRemoveBreakPoint()
 	exe 'call ' . b:myRemoveBreakPoint . '()'
 endfunction
 
-" Displaying status line always
-set laststatus=2
+function! MyModified()
+  return &ft =~ 'help' ? '' : &modified ? '+' : &modifiable ? '' : '-'
+endfunction
 
-" Custom status line
-set statusline=%<%f\ %h%m%r%=%-14.(%l,%c%V%)\ %r%{ShowProject()}%h
+function! MyReadonly()
+  return &ft !~? 'help' && &readonly ? 'RO' : ''
+endfunction
+
+function! s:syntastic()
+  SyntasticCheck
+  call lightline#update()
+endfunction
+
+function! MyMode()
+  let fname = expand('%:t')
+  return fname == 'ControlP' ? 'CtrlP' :
+        \ fname =~ 'NERD_tree' ? 'NERDTree' :
+        \ winwidth(0) > 60 ? lightline#mode() : ''
+endfunction
 
 " Show working directory
-function! ShowProject()
-	return substitute(getcwd(), '/Users/mios/workspace/', '', '')
-endfunction  
+function! ProjectName()
+  return substitute(getcwd(), '/Users/mios/workspace/', '', '')
+endfunction
+
+function! MyFilename()
+  let fname = expand('%:t')
+  return fname == '__Tagbar__' ? g:lightline.fname :
+      \ fname =~ 'NERD_tree' ? '' :
+      \ ('' != MyReadonly() ? MyReadonly() . ' ' : '') .
+      \ ('' != fname ? fname : '[No Name]') .
+      \ ('' != MyModified() ? ' ' . MyModified() : '')
+endfunction
 
 
 
@@ -409,6 +475,9 @@ noremap <F6> :call MySetBreakPoint()<CR>
 noremap <F7> :call MySetLog()<CR>
 " Remove all debugger and log lines
 noremap <F8> :call MyRemoveBreakPoint()<CR>
+
+noremap [[ :lp<CR>
+noremap ]] :lne<CR>
 
 
 nmap <tab> 		v>
