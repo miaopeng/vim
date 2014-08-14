@@ -79,8 +79,31 @@ function! MyJsLint()
 	make
 endfunction
 
-function! MyJsDebug()
-	py jsDebug()
+function! MyFixStyle()
+  call ModifyByFixJsStyle()
+endfunction
+
+function! ModifyByFixJsStyle()
+  " save positions
+  let pos = s:SavePositions()
+
+  let tempfile = tempname() . '.js'
+  silent call writefile(getbufline(bufname('%'), 1, '$'), tempfile)
+  try
+      " use fixjsstyle as filter
+      silent! execute '!fixjsstyle --nojsdoc' tempfile
+
+      1,$delete "_
+      execute 'read' tempfile
+      1delete "_
+
+      " restore positions
+      call s:RestorePositions(pos)
+  catch
+      echoerr v:exception
+  finally
+      call delete(tempfile)
+  endtry
 endfunction
 
 function! MyJsSetBreakPoint()
@@ -95,9 +118,37 @@ function! MyJsRemoveBreakPoint()
 	py jsRemoveAllDebug()
 endfunction
 
+" save cursor and screen positions
+" pair up this function with s:RestorePositions
+if !exists('*s:SavePositions')
+    function s:SavePositions()
+        " cursor pos
+        let cursor = getpos('.')
+
+        " screen pos
+        normal! H
+        let screen = getpos('.')
+
+        return [screen, cursor]
+    endfunction
+endif
+
+" restore cursor and screen positions
+" pair up this function with s:SavePositions
+if !exists('*s:RestorePositions')
+    function s:RestorePositions(pos)
+        " screen
+        call setpos('.', a:pos[0])
+
+        " cursor
+        normal! zt
+        call setpos('.', a:pos[1])
+    endfunction
+  endif
+
 let b:myMake='MyJsMake'
 let b:myLint='MyJsLint'
-let b:myDebug='MyJsDebug'
+let b:myFixStyle='MyFixStyle'
 let b:mySetBreakPoint='MyJsSetBreakPoint'
 let b:mySetLog='MyJsSetLog'
 let b:myRemoveBreakPoint='MyJsRemoveBreakPoint'

@@ -129,9 +129,12 @@ Plugin 'SirVer/ultisnips'
   let g:UltiSnipsSnippetDirectories=["ultisnips"]
 
 Plugin 'Syntastic'
-  let g:syntastic_always_populate_loc_list = 1
+  let g:syntastic_always_populate_loc_list = 0 
   let g:syntastic_stl_format = '[%E{Err: %fe #%e}%B{, }%W{Warn: %fw #%w}]'
   "let g:syntastic_auto_loc_list = 1
+  let g:syntastic_enable_balloons = 0 
+  let g:syntastic_enable_highlighting = 0
+  
 
   let g:syntastic_error_symbol = '●'
   let g:syntastic_warning_symbol = '●'
@@ -141,6 +144,7 @@ Plugin 'Syntastic'
   let g:syntastic_javascript_checkers = ['jshint']
   let g:syntastic_ruby_checkers = ['rubocop']
   let g:syntastic_css_checkers = ['csslint']
+  let g:syntastic_scss_checkers = ['scss_lint']
   let g:syntastic_haml_checkers = ['haml_lint']
 
 Plugin 'xolox/vim-misc'
@@ -181,6 +185,7 @@ Plugin 'The-NERD-tree'
 
   let NERDTreeShowBookmarks=1
   let NERDTreeChDirMode=2
+  let NERDTreeMinimalUI=1
   nmap <silent> <leader>nt :NERDTree<cr> 
 
 
@@ -193,7 +198,7 @@ Plugin 'vimwiki'
 
   let g:vimwiki_use_mouse = 1
   let g:vimwiki_list = [{'path': '~/Dropbox/profile/vimwiki/',
-  \ 'path_html': '~/Dropbox/profile/vimwiki/html/',
+  \ 'path_html': '~/Dropbox/profile/vimwiki/html/', "syntax": "markdown",
   \ 'html_header': '~/Dropbox/profile/vimwiki/template/header.tpl',}]
 
 
@@ -316,6 +321,9 @@ if has("gui_macvim")
 
 	set guioptions-=T "egmrt
 	"set guioptions+=b 
+
+  " remove scrollbars
+  set guioptions-=lrb
 	
 	" set custom mvim shortkeys
 	macm File.New\ Tab						key=<D-T>
@@ -404,8 +412,8 @@ function! MyLint()
 	exe 'call ' . b:myLint . '()'
 endfunction
 
-function! MyDebug()
-	exe 'call ' . b:myDebug . '()'
+function! MyFixStyle()
+	exe 'call ' . b:myFixStyle . '()'
 endfunction
 
 function! MySetBreakPoint()
@@ -466,7 +474,7 @@ map <leader>q :q<cr>
 " for make & debug
 "noremap <F2> <ESC>:call MyLint()<CR>
 noremap <F2> <ESC>:JSHint<CR>
-noremap <F3> :call MyDebug()<CR>
+noremap <F3> :call MyFixStyle()<CR>
 noremap <F4> :call MyMake()<CR>
 noremap <F5> <ESC>:call QFSwitch()<CR>
 " insert a new 'debugger;' line
