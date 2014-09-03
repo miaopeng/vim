@@ -904,15 +904,13 @@ end
 endsnippet
 
 snippet log "Rails logger"
-Rails.logger.info(${1})
+Rails.logger.debug(${1})
 endsnippet
 
 snippet logs "Rails logger, multi lines"
-Rails.logger.info("\n")
-Rails.logger.info('***** ${1} *****')
-Rails.logger.info(${2})
-Rails.logger.info('*' * 10)
-Rails.logger.info("\n")
+Rails.logger.debug('***** ${1} *****')
+Rails.logger.debug(${2})
+Rails.logger.debug('*' * 10)
 endsnippet
 
 # vim:ft=snippets:

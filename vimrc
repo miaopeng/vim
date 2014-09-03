@@ -9,6 +9,7 @@
 " default
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set nocompatible	" stops vim from behaving in a strongly vi -compatible way
+set nomodeline
 set history=400		" keep 400 lines of command line history
 if has('mouse')
   set mouse=a		" enable mouse in all mode

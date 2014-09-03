@@ -5,7 +5,7 @@ snippet	/* "Comments"
 /**
  * ${1:Describe what this method does}
  * @param {${2:String|Object|Array|Boolean|Number}} ${3:paramName} ${4:Describe this parameter}
- * @returns ${5:Describe what it returns}
+ * @return ${5:Describe what it returns}
  */
 endsnippet
 
@@ -14,13 +14,13 @@ getElement${1/(T)|.*/(?1:s)/}By${1:T}${1/(T)|(I)|.*/(?1:agName)(?2:d)/}('$2')
 endsnippet
 
 snippet '':f "object method string"
-'${1:${2:#thing}:${3:click}}': function(element){
+'${1:${2:#thing}:${3:click}}': function(element) {
 	$0
 }${10:,}
 endsnippet
 
 snippet :f "Object Method"
-${1:method_name}: function(${3:attribute}){
+${1:method_name}: function(${3:attribute}) {
 	$0
 }${10:,}
 endsnippet
@@ -41,7 +41,7 @@ ${1:class_name}.prototype.${2:method_name} = function(${3:first_argument}) {
 endsnippet
 
 snippet for "for (...) {...} (faster)"
-for (var ${2:i} = ${1:Things}.length - 1; $2 >= 0; $2--){
+for (var ${2:i} = ${1:Things}.length - 1; $2 >= 0; $2--) {
 	${3:$1[$2]}$0
 };
 endsnippet
@@ -85,13 +85,13 @@ if (${1:true}) {
 endsnippet
 
 snippet timeout "setTimeout function"
-setTimeout(function(){
+setTimeout(function() {
     $0
 }${2:}, ${1:10});
 endsnippet
 
 snippet interval "setInterval function"
-setInterval(function(){
+setInterval(function() {
     $0
 }${2:}, ${1:10});
 endsnippet
@@ -120,7 +120,7 @@ endsnippet
 snippet def "define"
 define(${1:[
     ${2}
-], }function(${3:require, exports, module}){
+], }function(${3:require, exports, module}) {
     ${4}
 });
 endsnippet
@@ -128,7 +128,7 @@ endsnippet
 snippet req "require"
 require(${1:[
     ${2}
-], }function(${3:require, exports, module}){
+], }function(${3:require, exports, module}) {
     ${4}
 });
 endsnippet
@@ -138,7 +138,7 @@ snippet //= "pipline require"
 endsnippet
 
 snippet class "class"
-function ${1:ClassName}(${2:opt}){
+function ${1:ClassName}(${2:opt}) {
     ${3}
 }
 
@@ -148,7 +148,7 @@ $1.prototype = {
 
 };
 
-function exports(${5:$2}){
+function exports(${5:$2}) {
     return exports.$4(${6:$5});
 }
 
@@ -186,7 +186,7 @@ snippet App "Application"
         }
     };
     window.app = App;
-})(window.jQuery);
+})(jQuery);
 endsnippet
 
 snippet View "Yottaa Backbone View"

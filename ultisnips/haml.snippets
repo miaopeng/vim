@@ -15,15 +15,15 @@ snippet cc
 endsnippet
 
 snippet jstag
-= javascript_include_tag "${1}"
+= javascript_include_tag '${1}'
 endsnippet
 
 snippet csstag
-= stylesheet_link_tag "${1}"
+= stylesheet_link_tag '${1}'
 endsnippet
 
 snippet formtag
-= form_tag(path, method: "PUT", remote: true, :id => "", :class => "") do
+= form_tag(path, method: 'PUT', remote: true, id: '', class: '') do
 endsnippet
 
 snippet path
@@ -31,5 +31,5 @@ ${1}path(${2}${3:, param_name: param_value}${4:, :anchor => ''})
 endsnippet
 
 snippet link "link_to helper"
-= link_to "${1:text}", ${2:path}${3:, :id =>''}${4:, :class => ''}${5:, :remote => true}${6:, :confirm => 'Do you want to delete the selected item?'}
+= link_to '${1:text}', ${2:path}${3:, id: ''}${4:, class: ''}${5:, remote: true}${6:, confirm: 'Do you want to delete the selected item?'}
 endsnippet
