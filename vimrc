@@ -176,6 +176,7 @@ Plugin 'xolox/vim-session'
 Plugin 'The-NERD-Commenter'
 
   :set guioptions-=L
+  let NERDSpaceDelims=1
 
 Plugin 'The-NERD-tree'
 
