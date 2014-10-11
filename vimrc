@@ -327,19 +327,6 @@ if has("gui_macvim")
   " remove scrollbars
   set guioptions-=lrb
 	
-	" set custom mvim shortkeys
-	macm File.New\ Tab						key=<D-T>
-	macm File.Save<Tab>:w					key=<D-s>
-	macm File.Save\ As\.\.\.<Tab>:sav		key=<D-S>
-	macm Edit.Undo<Tab>u					key=<D-z> action=undo:
-	macm Edit.Redo<Tab>^R					key=<D-Z> action=redo:
-	macm Edit.Cut<Tab>"+x					key=<D-x> action=cut:
-	macm Edit.Copy<Tab>"+y					key=<D-c> action=copy:
-	macm Edit.Paste<Tab>"+gP				key=<D-v> action=paste:
-	macm Edit.Select\ All<Tab>ggVG			key=<D-A> action=selectAll:
-	macm Window.Toggle\ Full\ Screen\ Mode	key=<D-F>
-	macm Window.Select\ Next\ Tab			key=<D-}>
-	macm Window.Select\ Previous\ Tab		key=<D-{>
 endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
