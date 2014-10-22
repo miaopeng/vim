@@ -46,6 +46,8 @@ Plugin 'mileszs/ack.vim'
 " :Ag, e, o, go, t, h, v, q
 Plugin 'rking/ag.vim'
 
+Plugin 'AutoComplPop'
+
 " <c-p>, <c-j> and <c-k> to navigation in result panel
 Plugin 'ctrlp.vim'
   let g:ctrlp_working_path_mode = ''
@@ -145,8 +147,10 @@ Plugin 'Syntastic'
   let g:syntastic_javascript_checkers = ['jshint']
   let g:syntastic_ruby_checkers = ['rubocop']
   let g:syntastic_css_checkers = ['csslint']
-  let g:syntastic_scss_checkers = ['scss_lint']
+  let g:syntastic_scss_checkers = ['scss_lint'] " gem install scss-lint
   let g:syntastic_haml_checkers = ['haml_lint']
+  let g:syntastic_haml_checkers = ['haml_lint']
+  " let g:syntastic_debug = 19 " debug
 
 Plugin 'xolox/vim-misc'
 Plugin 'xolox/vim-session'
@@ -290,9 +294,7 @@ let macvim_skip_colorscheme=1
 colorscheme yytextmate
 
 if MySys() == "mac"
-	"set guifont=TextMate_Regular:h13
 	set guifont=Monaco:h12
-	set guifontwide=Hei_Regular:h13
 elseif MySys() == "linux"
 	set guifont=Monospace
 endif
