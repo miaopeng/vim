@@ -46,8 +46,6 @@ Plugin 'mileszs/ack.vim'
 " :Ag, e, o, go, t, h, v, q
 Plugin 'rking/ag.vim'
 
-Plugin 'AutoComplPop'
-
 " <c-p>, <c-j> and <c-k> to navigation in result panel
 Plugin 'ctrlp.vim'
   let g:ctrlp_working_path_mode = ''
@@ -184,6 +182,7 @@ Plugin 'marijnh/tern_for_vim'
 
 Plugin 'xolox/vim-misc'
 Plugin 'xolox/vim-session'
+Plugin 'Valloric/YouCompleteMe'
 
 
   """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
