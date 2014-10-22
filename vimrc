@@ -53,10 +53,6 @@ Plugin 'ctrlp.vim'
   let g:ctrlp_working_path_mode = ''
   let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git\|tmp'
 
-" For SCSS
-"Plugin 'JulesWang/css.vim'
-"Plugin 'cakebaker/scss-syntax.vim'
-
 " Ctrl+y,
 Plugin 'Emmet.vim'
 
@@ -118,9 +114,6 @@ Plugin 'itchyny/lightline.vim'
         \ }
         \ }
 
-" :Matrix
-"Plugin 'matrix.vim--Yang'
-
 " gf
 Plugin 'rails.vim'
 
@@ -151,6 +144,43 @@ Plugin 'Syntastic'
   let g:syntastic_haml_checkers = ['haml_lint']
   let g:syntastic_haml_checkers = ['haml_lint']
   " let g:syntastic_debug = 19 " debug
+  "
+Plugin 'marijnh/tern_for_vim'
+
+  """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+  " tern_for_vim settings
+  """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+  let g:tern_map_keys=1
+  let g:tern_show_argument_hints = 'on_hold'
+
+  " Documentation under cursor
+  nmap <leader>td :TernDoc<cr> 
+
+  " Browse documentation
+  nmap <leader>tb :TernDocBrowse<cr> 
+
+  " Type hints
+  nmap <leader>tt :TernType<cr> 
+
+  " Jump to definition
+  nmap <leader>td :TernDef<cr>  
+
+  " Jump to definition inside preview
+  nmap <leader>tpd :TernDefPreview<cr>  
+
+  " Definition in new split
+  nmap <leader>tsd :TernDefSplit<cr>  
+
+  " Definition in new tab
+  nmap <leader>ttd :TernDefTab<cr>  
+
+  " All reference under cursor
+  nmap <leader>tr :TernRefs<cr>  
+
+  " Rename variable
+  nmap <leader>tR :TernRename<cr>
+
 
 Plugin 'xolox/vim-misc'
 Plugin 'xolox/vim-session'
