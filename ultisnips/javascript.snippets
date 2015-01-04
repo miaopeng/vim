@@ -177,7 +177,7 @@ snippet App "Application"
 /**
  * ${7:Describe what this application does}
  */
-;(function($) {
+;(function($, exports) {
     'use strict';
 
     var App = {
@@ -185,12 +185,121 @@ snippet App "Application"
             
         }
     };
-    window.app = App;
-})(jQuery);
+    exports.app = App;
+})(jQuery, this);
 endsnippet
 
 snippet View "Yottaa Backbone View"
 Y.View.${1} = Y.View.Base.extend({
     ${2}
 });
+endsnippet
+
+snippet jpe "jQuery Plugin For inherit"
+/* =================================
+ * ================================= */
+
+(function($) {
+    "use strict";
+
+    // PUBLIC CLASS DEFINITION
+    // ===============================
+
+    var ClassName = function(el, options) {
+        this.init('pluginName', el, options);
+    };
+
+    ClassName.DEFAULTS = $.extend({}, $.fn.Parent.Constructor.DEFAULTS, {});
+
+    ClassName.prototype = $.extend({}, $.fn.Parent.Constructor.prototype);
+
+    ClassName.prototype.constructor = ClassName;
+
+    ClassName.prototype.Function = function() {};
+
+    // PLUGIN DEFINITION
+    // =========================
+
+    $.fn.pluginName = function(option) {
+        return this.each(function() {
+            var $this = $(this);
+            var data = $this.data('namespace.pluginName');
+            var options = typeof option === 'object' && option;
+
+            if (!data) {
+                $this.data('namespace.pluginName', (data = new ClassName(this, options)));
+            }
+            if (typeof option === 'string') {
+                data[option]();
+            }
+        });
+    };
+
+})(window.jQuery);
+endsnippet
+
+snippet jp "jQuery Plugin"
+/* =================================
+ * ================================= */
+
+(function($) {
+    "use strict";
+
+    // PUBLIC CLASS DEFINITION
+    // ===============================
+
+    var ClassName = function(el, options) {
+        this.type = null;
+        this.$el = null;
+        this.init('pluginName', el, options);
+    };
+
+    ClassName.VERSION = '0.0.1';
+
+    ClassName.DEFAULTS = {};
+
+    ClassName.prototype.init = function(type, el, options) {
+        this.type = type;
+        this.$el = $(el);
+        this.options = this.getOptions(options);
+    };
+
+    ClassName.prototype.getDefaults = function() {
+        return ClassName.DEFAULTS;
+    };
+
+    ClassName.prototype.getOptions = function(options) {
+        options = $.extend({}, this.getDefaults(), this.$el.data(), options);
+        return options;
+    };
+
+    ClassName.prototype.destroy = function() {
+        this.hide().$el.off('.' + this.type).removeData('namespace.' + this.type);
+    };
+
+    // PLUGIN DEFINITION
+    // =========================
+
+    function Plugin(option) {
+        return this.each(function() {
+            var $this = $(this);
+            var data = $this.data('namespace.pluginName');
+            var options = typeof option === 'object' && option;
+
+            if (!data && option === 'destroy') {
+                return;
+            }
+            if (!data) {
+                $this.data('namespace.pluginName', (data = new ClassName(this, options)));
+            }
+            if (typeof option === 'string') {
+                data[option]();
+            }
+        });
+    }
+
+    $.fn.pluginName = Plugin;
+    $.fn.pluginName.Constructor = ClassName;
+
+})(window.jQuery);
 endsnippet
