@@ -1,7 +1,5 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Maintainer: Dexter.Yy <dexter.yy at gmail.com>
-" Last Change: $LastChangedDate$ $Rev$
-" Modified By: mios <peng.mios at gmail.com>
+" Maintainer: mios <mios426@gmail.com>
 " Cheat Sheets: http://www.fprintf.net/vimCheatSheet.html
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -66,6 +64,8 @@ Plugin 'FuzzyFinder'
   nmap <leader>ff :FufFile<cr>
   nmap <leader>fd :FufDir<cr>
   nmap <leader>fa :FufBookmark<cr>
+
+Plugin 'tpope/vim-haml'
 
 " F2
 Plugin 'jshint.vim'
@@ -211,8 +211,17 @@ Plugin 'marijnh/tern_for_vim'
   nmap <leader>tR :TernRename<cr>
 
 
+Plugin 'groenewege/vim-less'
 Plugin 'xolox/vim-misc'
 Plugin 'xolox/vim-session'
+
+" Ctrl+n
+Plugin 'terryma/vim-multiple-cursors'
+
+" Plugin 'mxw/vim-jsx'
+
+  " let g:jsx_ext_required = 0
+
 Plugin 'Valloric/YouCompleteMe'
 
 
@@ -346,6 +355,7 @@ set matchpairs=(:),{:},[:],<:>
 "set whichwrap=b,s,<,>,[,]	" backspace, space, arrows auto move to next line
 "set foldmethod=indent	" enable fold lines for indent
 set wildignore+=node_modules,tmp/cache
+set ar " auto read file
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " interface
@@ -410,13 +420,14 @@ autocmd BufNewFile,BufRead *.styl setlocal ft=stylus
 " language support
 autocmd FileType html 		setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2
 autocmd FileType haml 		setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2
-autocmd FileType javascript setlocal expandtab shiftwidth=4 tabstop=4 softtabstop=4 textwidth=79
+autocmd FileType javascript setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2 textwidth=79
 autocmd FileType css 		  setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2 textwidth=79
 autocmd FileType scss 		setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2 textwidth=79
 autocmd FileType stylus 	setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2 textwidth=79
 autocmd FileType python 	setlocal expandtab shiftwidth=4 tabstop=4 softtabstop=4 textwidth=79
 autocmd FileType ruby 		setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2
 autocmd FileType vim 		  setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2
+autocmd FileType conf 		setlocal expandtab shiftwidth=4 tabstop=4 softtabstop=4
 
 " for AutoComplPop
 autocmd FileType html setlocal omnifunc=htmlcomplete#CompleteTags
@@ -426,6 +437,7 @@ autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 autocmd FileType javascript noremap <buffer> <Leader>f :exe '0,$!js-beautify % --config ~/.jsbeautifyrc'<cr>
 autocmd FileType html       noremap <buffer> <Leader>f :exe '0,$!html-beautify % --config ~/.htmlbeautifyrc'<cr>
 autocmd FileType css        noremap <buffer> <Leader>f :exe '0,$!css-beautify % --config ~/.cssbeautifyrc'<cr>
+autocmd FileType scss        noremap <buffer> <Leader>f :exe '0,$!css-beautify % --config ~/.cssbeautifyrc'<cr>
 
 au TabEnter * if exists("t:wd") | exe "cd" t:wd | endif 
 
