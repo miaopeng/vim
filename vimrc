@@ -1,29 +1,26 @@
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Maintainer: mios <mios426@gmail.com>
 " Cheat Sheets: http://www.fprintf.net/vimCheatSheet.html
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""
 " default
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set nocompatible	" stops vim from behaving in a strongly vi -compatible way
+"""""""""""
+set nocompatible                " stops vim from behaving in a strongly vi -compatible way
 set nomodeline
-set history=400		" keep 400 lines of command line history
-if has('mouse')
-  set mouse=a		" enable mouse in all mode
-endif
+set history=400	                " keep 400 lines of command line history
+set mouse=a	                    " enable mouse in all mode
 set backspace=indent,eol,start	" allow backspace key works in normal way 
-set ruler		" show the cursor position all the time
-set showcmd		" display incomplete commands
-set incsearch	" do incremental searching
-call pathogen#infect()
+set ruler	                      " show the cursor position all the time
+set showcmd  	                  " display incomplete commands
+set incsearch	                  " do incremental searching
 
 let mapleader=","
 let g:mapleader=","
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""
 " Vundle
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""
 " required
 filetype off
 
@@ -70,7 +67,7 @@ Plugin 'tpope/vim-haml'
 " F2
 Plugin 'jshint.vim'
 
-  let g:jslint_neverAutoRun=1
+  let g:jslint_neverAutoRun=0
 
 Plugin 'L9'
 
@@ -170,7 +167,6 @@ Plugin 'Syntastic'
   let g:syntastic_ruby_checkers = ['rubocop']
   let g:syntastic_css_checkers = ['csslint']
   let g:syntastic_scss_checkers = ['scss_lint'] " gem install scss-lint
-  let g:syntastic_haml_checkers = ['haml_lint']
   let g:syntastic_haml_checkers = ['haml_lint']
   " let g:syntastic_debug = 19 " debug
   "
@@ -361,7 +357,7 @@ set ar " auto read file
 " interface
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let macvim_skip_colorscheme=1
-colorscheme yytextmate
+colorscheme jellybeans
 
 if MySys() == "mac"
 	set guifont=Monaco:h12
@@ -370,7 +366,7 @@ elseif MySys() == "linux"
 endif
 
 set anti
-set linespace=4 
+set linespace=4   " Line height
 set number
 set numberwidth=4
 set equalalways		" all split windows use same size

@@ -330,16 +330,18 @@ call s:X("Cursor",g:jellybeans_background_color,"b0d0f0","","","")
 call s:X("LineNr","605958",g:jellybeans_background_color,"none",s:termBlack,"")
 call s:X("CursorLineNr","ccc5c4","","none","White","")
 call s:X("Comment","888888","","italic","Grey","")
-call s:X("Todo","c7c7c7","","bold","White",s:termBlack)
+" call s:X("Todo","c7c7c7","","bold","White",s:termBlack)
+" Modified for warning info on SignColumn
+call s:X("Todo","666666","","bold","White",s:termBlack)
 
 call s:X("StatusLine","000000","dddddd","italic","","White")
 call s:X("StatusLineNC","ffffff","403c41","italic","White","Black")
-call s:X("VertSplit","777777","403c41","",s:termBlack,s:termBlack)
+call s:X("VertSplit","333333","","",s:termBlack,s:termBlack)
 call s:X("WildMenu","f0a0c0","302028","","Magenta","")
 
 call s:X("Folded","a0a8b0","384048","italic",s:termBlack,"")
 call s:X("FoldColumn","535D66","1f1f1f","","",s:termBlack)
-call s:X("SignColumn","777777","333333","","",s:termBlack)
+call s:X("SignColumn","777777","000000","","",s:termBlack)
 call s:X("ColorColumn","","000000","","",s:termBlack)
 
 call s:X("Title","70b950","","bold","Green","")
@@ -367,7 +369,8 @@ call s:X("SpecialKey","444444","1c1c1c","",s:termBlack,"")
 call s:X("Search","f0a0c0","302028","underline","Magenta","")
 
 call s:X("Directory","dad085","","","Yellow","")
-call s:X("ErrorMsg","","902020","","","DarkRed")
+call s:X("ErrorMsg","902020","","","","DarkRed") " used for error info on SignColumn
+
 hi! link Error ErrorMsg
 hi! link MoreMsg Special
 call s:X("Question","65C254","","","Green","")
