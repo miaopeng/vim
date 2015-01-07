@@ -44,23 +44,17 @@ Plugin 'rking/ag.vim'
 " <c-p>, <c-j> and <c-k> to navigation in result panel
 Plugin 'ctrlp.vim'
   let g:ctrlp_working_path_mode = ''
-  let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git\|tmp'
+  let g:ctrlp_custom_ignore = {
+    \ 'dir':  '\v[\/]\.(git|hg|svn)$\|node_modules$\|tmp$',
+    \ 'file': '\.pyc$\|\.pyo$\|\.rbc$|\.rbo$\|\.class$\|\.o$\|\~$\DS_Store$'
+    \ }
+  nmap <leader>rf :CtrlPBuffer<cr>
 
 " Ctrl+y,
 Plugin 'Emmet.vim'
 
 " :Gblame
 Plugin 'tpope/vim-fugitive'
-
-Plugin 'FuzzyFinder'
-
-  """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-  " FuzzyFinder settings
-  """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-  nmap <leader>fb :FufBuffer<cr>
-  nmap <leader>ff :FufFile<cr>
-  nmap <leader>fd :FufDir<cr>
-  nmap <leader>fa :FufBookmark<cr>
 
 Plugin 'tpope/vim-haml'
 
@@ -254,7 +248,7 @@ Plugin 'The-NERD-tree'
   " ,nt
   """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-  let NERDTreeShowBookmarks=1
+  let NERDTreeShowBookmarks=0
   let NERDTreeChDirMode=2
   let NERDTreeMinimalUI=1
   nmap <silent> <leader>nt :NERDTree<cr> 
