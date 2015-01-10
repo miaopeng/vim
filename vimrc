@@ -10,10 +10,11 @@ set nocompatible                " stops vim from behaving in a strongly vi -comp
 set nomodeline
 set history=400	                " keep 400 lines of command line history
 set mouse=a	                    " enable mouse in all mode
-set backspace=indent,eol,start	" allow backspace key works in normal way 
-set ruler	                      " show the cursor position all the time
-set showcmd  	                  " display incomplete commands
-set incsearch	                  " do incremental searching
+set backspace=indent,eol,start  " allow backspace key works in normal way 
+set ruler                       " show the cursor position all the time
+set showcmd                     " display incomplete commands
+set incsearch                   " do incremental searching
+set nofoldenable                " disable folding
 
 let mapleader=","
 let g:mapleader=","
@@ -197,9 +198,6 @@ Plugin 'marijnh/tern_for_vim'
   " All reference under cursor
   nmap <leader>tr :TernRefs<cr>  
 
-  " Rename variable
-  nmap <leader>tR :TernRename<cr>
-
 
 Plugin 'groenewege/vim-less'
 Plugin 'xolox/vim-misc'
@@ -208,9 +206,13 @@ Plugin 'xolox/vim-session'
 " Ctrl+n
 Plugin 'terryma/vim-multiple-cursors'
 
-" Plugin 'mxw/vim-jsx'
+Plugin 'pangloss/vim-javascript'
 
-  " let g:jsx_ext_required = 0
+  let b:javascript_fold = 0
+
+Plugin 'mxw/vim-jsx'
+
+  let g:jsx_ext_required = 0
 
 Plugin 'Valloric/YouCompleteMe'
 
