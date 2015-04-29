@@ -158,7 +158,7 @@ Plugin 'Syntastic'
   let g:syntastic_style_error_symbol = '»!'
   let g:syntastic_style_warning_symbol = '»'
 
-  let g:syntastic_javascript_checkers = ['jshint']
+  let g:syntastic_javascript_checkers = ['jsxhint']
   let g:syntastic_ruby_checkers = ['rubocop']
   let g:syntastic_css_checkers = ['csslint']
   let g:syntastic_scss_checkers = ['scss_lint'] " gem install scss-lint
