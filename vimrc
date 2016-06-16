@@ -15,6 +15,7 @@ set ruler                       " show the cursor position all the time
 set showcmd                     " display incomplete commands
 set incsearch                   " do incremental searching
 set nofoldenable                " disable folding
+set shell=/bin/sh
 
 let mapleader=","
 let g:mapleader=","
@@ -51,8 +52,15 @@ Plugin 'ctrlp.vim'
     \ }
   nmap <leader>rf :CtrlPBuffer<cr>
 
-" Ctrl+y,
+" expand and wrap: Ctrl+y,
+" balance tag inward: Ctrl+yd
+" balance tag outward: Ctrl+yD
 Plugin 'Emmet.vim'
+
+  let g:user_emmet_expandabbr_key = '<leader>h'
+  let g:user_emmet_balancetaginward_key = '<leader>hh'
+  let g:user_emmet_balancetagoutward_key = '<leader>HH'
+  
 
 " :Gblame
 Plugin 'tpope/vim-fugitive'
@@ -158,7 +166,7 @@ Plugin 'Syntastic'
   let g:syntastic_style_error_symbol = '»!'
   let g:syntastic_style_warning_symbol = '»'
 
-  let g:syntastic_javascript_checkers = ['jsxhint']
+  let g:syntastic_javascript_checkers = ['eslint']
   let g:syntastic_ruby_checkers = ['rubocop']
   let g:syntastic_css_checkers = ['csslint']
   let g:syntastic_scss_checkers = ['scss_lint'] " gem install scss-lint
@@ -263,13 +271,18 @@ Plugin 'vimwiki'
 
   """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
   " Vimwiki
-  " ,ww ,wt
+  " Open: ,ww
+  " Open In New Tap: ,wt 
+  " Search: :VWS
+  " Search Result Explor: :lne :lp :lopen
   """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
   let g:vimwiki_use_mouse = 1
   let g:vimwiki_list = [{'path': '~/Dropbox/profile/vimwiki/',
   \ 'path_html': '~/Dropbox/profile/vimwiki/html/', "syntax": "markdown",
   \ 'html_header': '~/Dropbox/profile/vimwiki/template/header.tpl',}]
+
+  noremap <leader>x :VimwikiToggleListItem<CR>
 
 
 Plugin 'surround.vim'
@@ -411,6 +424,7 @@ autocmd! bufwritepost *.js,*.rb,*.css,*.scss call s:syntastic()
 autocmd BufNewFile,BufRead *.haml setlocal ft=haml
 autocmd BufNewFile,BufRead *.erb setlocal ft=haml
 autocmd BufNewFile,BufRead *.styl setlocal ft=stylus
+autocmd BufNewFile,BufRead *.ejs setlocal ft=html
 
 " language support
 autocmd FileType html 		setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2

@@ -60,19 +60,19 @@ endsnippet
 
 snippet f "anonymous function"
 function(${1:argument}) {
-	${2:// body...}
-};
+  ${3}
+}${2:;}
 endsnippet
 
 snippet ff "closure function"
 ;(function(${2:argument}) {
-	${3:// body...}
+  ${3}
 })($1);
 endsnippet
 
 snippet ife "if ___ else"
 if (${1:true}) {
-    $0
+  $0
 } else {
 
 }
@@ -80,19 +80,19 @@ endsnippet
 
 snippet if "if"
 if (${1:true}) {
-    $0
+  $0
 }
 endsnippet
 
 snippet timeout "setTimeout function"
 setTimeout(function() {
-    $0
+  $0
 }${2:}, ${1:10});
 endsnippet
 
 snippet interval "setInterval function"
 setInterval(function() {
-    $0
+  $0
 }${2:}, ${1:10});
 endsnippet
 
@@ -117,21 +117,21 @@ snippet c "console"
 console.${1:log}('log:', ${2:1}, ${3}) // debug
 endsnippet
 
-snippet def "define"
-define(${1:[
-    ${2}
-], }function(${3:require, exports, module}) {
-    ${4}
-});
-endsnippet
+# snippet def "define"
+# define(${1:[
+    # ${2}
+# ], }function(${3:require, exports, module}) {
+    # ${4}
+# });
+# endsnippet
 
-snippet req "require"
-require(${1:[
-    ${2}
-], }function(${3:require, exports, module}) {
-    ${4}
-});
-endsnippet
+# snippet req "require"
+# require(${1:[
+    # ${2}
+# ], }function(${3:require, exports, module}) {
+    # ${4}
+# });
+# endsnippet
 
 snippet //= "pipline require"
 //= require ${0}
@@ -178,21 +178,19 @@ snippet App "Application"
  * ${7:Describe what this application does}
  */
 ;(function($, exports) {
-    'use strict';
+  'use strict';
 
-    var App = {
-        init: function(opt) {
-            
-        }
-    };
-    exports.app = App;
+  var App = {
+    init: function(opt) {
+      
+    }
+  };
+  exports.app = App;
 })(jQuery, this);
 endsnippet
 
-snippet View "Yottaa Backbone View"
-Y.View.${1} = Y.View.Base.extend({
-    ${2}
-});
+snippet $ "jQuery Selector"
+$('${1}')
 endsnippet
 
 snippet jpe "jQuery Plugin For inherit"

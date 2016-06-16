@@ -2,42 +2,44 @@
 #  React snippets
 #
 
-snippet cs "React.addons.classSet" b
-var cx = React.addons.classSet;
+snippet cls "classnames" b
+const cls = classnames({
+	${1}
+});
 endsnippet
 
 snippet cdm "component did mount" b
-componentDidMount: function() {
+componentDidMount() {
   ${1}
 },$0
 endsnippet
 
 snippet cdup "component did update" b
-componentDidUpdate: function(prevProps, prevState) {
+componentDidUpdate(prevProps, prevState) {
   ${1}
 },$0
 endsnippet
 
 snippet cwm "component will mount" b
-componentWillMount: function() {
+componentWillMount() {
   ${1}
 },$0
 endsnippet
 
 snippet cwr "component will receive props" b
-componentWillReceiveProps: function(nextProps) {
+componentWillReceiveProps(nextProps) {
   ${1}
 },$0
 endsnippet
 
 snippet cwun "component will unmount" b
-componentWillUnmount: function() {
+componentWillUnmount() {
   ${1}
 },$0
 endsnippet
 
 snippet cwu "component will update" b
-componentWillUpdate: function(nextProps, nextState) {
+componentWillUpdate(nextProps, nextState) {
   ${1}
 },$0
 endsnippet
@@ -53,7 +55,7 @@ forceUpdate(${1:callback});
 endsnippet
 
 snippet gdp "get default props" b
-getDefaultProps: function() {
+getDefaultProps() {
   return {
     ${1}
   };
@@ -61,7 +63,7 @@ getDefaultProps: function() {
 endsnippet
 
 snippet gis "get initial state" b
-getInitialState: function() {
+getInitialState() {
   return {
     ${1}: ${2}
   };
@@ -72,38 +74,28 @@ snippet ism "is mounted"
 isMounted()
 endsnippet
 
-snippet jsx "define jsx dom" b
-/**
- * @jsx React.DOM
- */
-endsnippet
-
 snippet pt "propTypes" b
 propTypes: {
   ${1}: React.PropTypes.${2:string}
 },
 endsnippet
 
+snippet react "React module" !b
+import React, { Component } from 'react';
+endsnippet
+
 snippet rcc "create class/component" b
-var React = require('React');
-
-var ${1:ClassName} = React.createClass({
-
-  render: function() {
-    /* jshint ignore:start */
+class ${1:ClassName} extends Component {
+  render() {
     return (
-      ${VISUAL}$3
+		  <div></div>
     );
-    /* jshint ignore:end */
   }
-
-});
-$0
-${2:module.exports = $1;}
+}
 endsnippet
 
 snippet ren
-render: function() {
+render() {
   return (
     ${1:<div />}
   );
@@ -117,7 +109,7 @@ this.setState({
 endsnippet
 
 snippet scu "should component update"
-shouldComponentUpdate: function(nextProps, nextState) {
+shouldComponentUpdate(nextProps, nextState) {
   ${1}
 },$0
 endsnippet
