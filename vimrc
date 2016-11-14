@@ -43,6 +43,8 @@ Plugin 'mileszs/ack.vim'
 " :Ag, e, o, go, t, h, v, q
 Plugin 'rking/ag.vim'
 
+Plugin 'maksimr/vim-jsbeautify'
+
 " <c-p>, <c-j> and <c-k> to navigation in result panel
 Plugin 'ctrlp.vim'
   let g:ctrlp_working_path_mode = ''
@@ -155,7 +157,7 @@ Plugin 'SirVer/ultisnips'
 
 Plugin 'Syntastic'
   let g:syntastic_always_populate_loc_list = 0 
-  let g:syntastic_stl_format = '[%E{Err: %fe #%e}%B{, }%W{Warn: %fw #%w}]'
+  " let g:syntastic_stl_format = '[%E{Err: %fe #%e}%B{, }%W{Warn: %fw #%w}]'
   "let g:syntastic_auto_loc_list = 1
   let g:syntastic_enable_balloons = 0 
   let g:syntastic_enable_highlighting = 0
@@ -167,6 +169,7 @@ Plugin 'Syntastic'
   let g:syntastic_style_warning_symbol = '»'
 
   let g:syntastic_javascript_checkers = ['eslint']
+  let g:syntastic_javascript_eslint_exec = 'eslint_d'
   let g:syntastic_ruby_checkers = ['rubocop']
   let g:syntastic_css_checkers = ['csslint']
   let g:syntastic_scss_checkers = ['scss_lint'] " gem install scss-lint
@@ -278,9 +281,9 @@ Plugin 'vimwiki'
   """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
   let g:vimwiki_use_mouse = 1
-  let g:vimwiki_list = [{'path': '~/Dropbox/profile/vimwiki/',
-  \ 'path_html': '~/Dropbox/profile/vimwiki/html/', "syntax": "markdown",
-  \ 'html_header': '~/Dropbox/profile/vimwiki/template/header.tpl',}]
+  let g:vimwiki_list = [{'path': '~/Google Drive/Dropbox/profile/vimwiki/',
+  \ 'path_html': '~/Google Drive/Dropbox/profile/vimwiki/html/', "syntax": "markdown",
+  \ 'html_header': '~/Google Drive/Dropbox/profile/vimwiki/template/header.tpl',}]
 
   noremap <leader>x :VimwikiToggleListItem<CR>
 
@@ -443,7 +446,7 @@ autocmd FileType html setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
-autocmd FileType javascript noremap <buffer> <Leader>f :exe '0,$!js-beautify % --config ~/.jsbeautifyrc'<cr>
+autocmd FileType javascript noremap <buffer> <F3> :exe '0,$!js-beautify % --config ~/.jsbeautifyrc'<cr>
 autocmd FileType html       noremap <buffer> <Leader>f :exe '0,$!html-beautify % --config ~/.htmlbeautifyrc'<cr>
 autocmd FileType css        noremap <buffer> <Leader>f :exe '0,$!css-beautify % --config ~/.cssbeautifyrc'<cr>
 autocmd FileType scss        noremap <buffer> <Leader>f :exe '0,$!css-beautify % --config ~/.cssbeautifyrc'<cr>
@@ -546,7 +549,7 @@ map <leader>q :q<cr>
 " for make & debug
 "noremap <F2> <ESC>:call MyLint()<CR>
 noremap <F2> <ESC>:JSHint<CR>
-noremap <F3> :call MyFixStyle()<CR>
+" noremap <F3> :call MyFixStyle()<CR>
 noremap <F4> :call MyMake()<CR>
 noremap <F5> <ESC>:call QFSwitch()<CR>
 " insert a new 'debugger;' line
